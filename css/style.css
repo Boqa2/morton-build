@@ -1,0 +1,466 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 1280px;
+  height: auto;
+}
+.content {
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  z-index: 12;
+  position: relative;
+}
+
+.content > header {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  transition: all 0.7s ease-in-out;
+  position: fixed;
+  z-index: 999;
+}
+.logo {
+  height: 45px;
+  width: 200px;
+  display: flex;
+  gap: 5px;
+  text-decoration: none;
+  color: white;
+}
+.mortonLogo {
+  height: 45px;
+  fill: white;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  height: 45px;
+  line-height: 24px;
+  align-items: center;
+}
+.txt2 {
+  font-size: 28px;
+  height: 19px;
+}
+.txt1 {
+  font-size: 24px;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  fill: white;
+}
+.icon:hover {
+  fill: #b4b4b4;
+}
+.icons:hover {
+  transform: scale(1.1);
+}
+.x {
+  width: 20px;
+  height: 20px;
+}
+.home {
+  width: 17px;
+  height: 17px;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.icons {
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  padding: 0 10px;
+  padding-top: 3px;
+  border: 3px;
+}
+
+.link:hover {
+  background: #fff;
+  color: #000;
+  border: solid white;
+}
+.link.active {
+  border:  solid white;
+}
+/* .link.active:hover {
+  background: #fff;
+  color: black;
+} */
+
+.link-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+.main {
+  display: flex;
+  width: 100%;
+  height: 25%;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 9.3%;
+  background: rgba(0, 0, 0, 0.65);
+  align-items: center;
+}
+
+.main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/4969-1\ \(1\).svg");
+  z-index: -1;
+}
+.main-text {
+  color: white;
+  width: 520px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  height: 325px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.mt1 {
+  font-size: 32px;
+  width: 300px;
+  text-align: center;
+  line-height: 33px;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 2s ease-in;
+  animation: 4s forwards;
+}
+.mt2 {
+  font-size: 18px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  display: grid;
+  overflow: hidden;
+  gap: 10px;
+}
+.animes {
+  animation: 4s forwards;
+  transition: all 2s ease-in;
+  opacity: 0;
+}
+
+.forTopFade {
+  animation-name: forTopFade;
+}
+.forTopFade2 {
+  animation-name: forTopFade2;
+}
+
+@keyframes forTopFade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  60% {
+    transform: translateY(7%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-3%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes forTopFade2 {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  60% {
+    transform: translateY(7%);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  align-items: end;
+  padding: 0 30px;
+  bottom: 30px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  position: relative;
+}
+
+.top-text,
+.bottom-text {
+  font-size: 17px;
+  text-transform: uppercase;
+  position: absolute;
+  font-family: 100;
+  font-family: "Bebas Neue", serif;
+}
+.top-text {
+  top: -9px;
+}
+.bottom-text {
+  bottom: -9px;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 10px;
+  border: 2px solid white;
+  position: relative;
+  clip-path: polygon(
+    0% 0%,
+    24% 0%,
+    24% 19%,
+    76% 19%,
+    76% 0%,
+    100% 0%,
+    100% 100%,
+    76% 100%,
+    76% 82%,
+    24% 82%,
+    24% 100%,
+    0% 100%
+  );
+}
+.border-box {
+  width: 240px;
+  height: 40px;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.highlight-text {
+  color: red;
+  width: 240px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Bebas Neue", serif;
+  text-decoration: none;
+}
+
+.get-start {
+  width: 240px;
+  height: 50px;
+  background: rgba(214, 17, 47, 255);
+  display: flex;
+  color: white;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  transition: all 0.3s ease-in-out;
+}
+.get-start:hover {
+  transform: scale(1.1);
+}
+
+.side {
+  background: #fff;
+}
+
+.foto-slide {
+  padding-top: 9.3%;
+  width: 1280px;
+  height: 25%;
+  display: flex;
+  background: #fff;
+}
+
+.im {
+  height: 110%;
+}
+
+.custom-prevs,
+.custom-nexts {
+  width: 25px;
+  height: 40px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.line {
+  position: absolute;
+  width: 26px;
+  height: 2px;
+  background-color: black;
+  transition: background-color 0.3s ease;
+}
+.custom-prevs .line1 {
+  transform: rotate(40deg) translate(10px, 10px);
+}
+
+.custom-prevs .line2 {
+  transform: rotate(-40deg) translate(2px, -2px);
+}
+
+.custom-nexts .line1 {
+  transform: rotate(-40deg) translate(-10px, 10px);
+}
+
+.custom-nexts .line2 {
+  transform: rotate(40deg) translate(-2px, -2px);
+}
+
+/* Эффект наведения */
+.custom-prevs:hover .line {
+  background-color: black;
+}
+
+.custom-nexts:hover .line {
+  background-color: #777;
+}
+.line.inactive {
+  background-color: #9b9b9b !important;
+}
+
+.for-texts {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  gap: 15px;
+}
+
+.studia {
+  background: rgba(0, 0, 0, 0.422);
+  width: 100%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.studia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/3D-Studio-Hobby-Shop-Red-and-Charcoal\ \(1\).svg")
+    bottom/cover no-repeat;
+  z-index: -1;
+}
+
+.anime-text {
+  width: 450px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.anime {
+  text-align: center;
+  color: #fff;
+  line-height: 1;
+  font-size: 40px;
+  opacity: 0;
+  transition: all 1s ease-in;
+  animation: 4s forwards;
+}
+
+.box-content{
+  position: absolute;
+  bottom: 34px;
+  left: 20px;
+}
+
+.footer-studio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+.sec{
+  width: 655px ;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.sec > span {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.sec > p{
+  font-size: 18px;
+  color: rgb(101, 101, 101);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
