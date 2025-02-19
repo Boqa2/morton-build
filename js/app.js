@@ -1,5 +1,6 @@
 const anime = document.querySelector(".mt1");
 const anime2 = document.querySelectorAll(".animes");
+const animes = document.querySelector(".anime");
 const containerHover = document.querySelector(".foto-slide");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -8,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuItems = document.querySelectorAll(".link");
   const header = document.querySelector("header");
 
-  let currentIndex = 2;
+  let currentIndex = 0;
   let slideHeight = document.querySelector(".slide").clientHeight;
-  //   let autoSlideInterval;
+  let autoSlideInterval;
   let isScrolling = false;
   let lastTouchY = 0;
   let lastScrollTime = 0;
@@ -25,7 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
     menuItems.forEach((item, index) =>
       item.classList.toggle("active", index === currentIndex)
     );
-    if (currentIndex == 1) {
+    if (currentIndex === 1) {
+      header.style.background = "#000";
+    } else if (currentIndex === 3) {
       header.style.background = "#000";
     } else {
       header.style.background = "transparent";
@@ -50,18 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
         span.classList.remove("forTopFade");
       });
     }
-
     if (currentIndex === 2 && previousIndex !== 2) {
-      anime2.forEach((span) => {
-        span.classList.add("forTopFade");
-        span.classList.remove("forTopFade2");
-      });
+      animes.classList.add("forTopFade");
+      animes.classList.remove("forTopFade2");
     } else if (currentIndex !== 2 && previousIndex === 2) {
-      anime2.forEach((span) => {
-        span.classList.add("forTopFade2");
-        span.classList.remove("forTopFade");
-      });
+      animes.classList.add("forTopFade2");
+      animes.classList.remove("forTopFade");
     }
+
+    // console.log(animes);
   }
   function changeSlide(delta) {
     const now = Date.now();
@@ -75,11 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => (isScrolling = false), 600);
   }
 
-  //   function startAutoSlide() {
-  //     autoSlideInterval = setInterval(() => changeSlide(1), 12000);
-  //   }
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => changeSlide(1), 10000);
+  }
   window.goToSlide = function (index) {
-    previousIndex = currentIndex; // Сохраняем прошлый индекс
+    previousIndex = currentIndex;
     currentIndex = index;
     updateSlider();
     clearInterval(autoSlideInterval);
@@ -95,10 +95,10 @@ document.addEventListener("DOMContentLoaded", function () {
       lastTouchY = touchY;
     }
   });
-  //   slidesContainer.addEventListener("mouseenter", () =>
-  //     clearInterval(autoSlideInterval)
-  //   );
-  //   slidesContainer.addEventListener("mouseleave", startAutoSlide);
+  slidesContainer.addEventListener("mouseenter", () =>
+    clearInterval(autoSlideInterval)
+  );
+  slidesContainer.addEventListener("mouseleave", startAutoSlide);
   menuItems.forEach((item) =>
     item.addEventListener("click", () => {
       currentIndex = parseInt(item.getAttribute("data-slide-index"));
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   updateSlider();
-  //   startAutoSlide();
+  startAutoSlide();
 });
 
 document.addEventListener("DOMContentLoaded", () => {

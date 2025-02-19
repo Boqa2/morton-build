@@ -6,6 +6,7 @@
     <title>Morton Buildings</title>
     <link rel="stylesheet" href="css/font-style.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/maps.css" />
     <link rel="stylesheet" href="css/slider.css" />
   </head>
   <body>
@@ -186,7 +187,7 @@
                   <div class="button">
                     <div class="border-box">
                       <a
-                      target="_blank"
+                        target="_blank"
                         href="https://mortonbuildings.com/get-started"
                         class="highlight-text"
                         >SAVE DURING BUILDING VALUE DAYS</a
@@ -196,7 +197,7 @@
                   <div class="bottom-text">NOW THROUGH FEBRUARY</div>
                 </div>
                 <a
-                target="_blank"
+                  target="_blank"
                   href="https://mortonbuildings.com/get-started"
                   class="get-start bebas-neue-regular"
                   >GET STARTED</a
@@ -362,14 +363,15 @@
             <div class="slide 3d-studio">
               <div class="studia">
                 <div class="anime-text">
-                  <div class="animes anime bebas-neue-regular">
-                    DESIGN YOUR OWN MORTON BUILDING <br> USING OUR FREE 3D STUDIO
+                  <div class="anime bebas-neue-regular forTopFade">
+                    DESIGN YOUR OWN MORTON BUILDING <br />
+                    USING OUR FREE 3D STUDIO
                   </div>
                   <a
-                  target="_blank"
-                    href="https://mortonbuildings.com/get-started"
+                    target="_blank"
+                    href=" https://mortonbuildings.com/3d-studio"
                     class="get-start bebas-neue-regular"
-                    >GET STARTED</a
+                    >START DESIGNING</a
                   >
                 </div>
                 <div class="box-content">
@@ -378,7 +380,7 @@
                     <div class="button">
                       <div class="border-box">
                         <a
-                        target="_blank"
+                          target="_blank"
                           href="https://mortonbuildings.com/get-started"
                           class="highlight-text"
                           >SAVE DURING BUILDING VALUE DAYS</a
@@ -391,16 +393,64 @@
               </div>
               <div class="footer-studio">
                 <div class="sec">
-                  <span class="bebas-neue-regular">Your Creativity. Our Long-Lasting Durability.</span>
-                  <p>You are on your way to designing and visualizing a post-frame structure that is built stronger, lasts longer, and looks better with this easy-to-use</p>
+                  <span class="bebas-neue-regular"
+                    >Your Creativity. Our Long-Lasting Durability.</span
+                  >
+                  <p>
+                    You are on your way to designing and visualizing a
+                    post-frame structure that is built stronger, lasts longer,
+                    and looks better with this easy-to-use
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="slide side">h</div>
+            <div class="slide maps">
+              <div class="container-map">
+                <div id="map" class="map"></div>
+              </div>
+              <div class="information">
+                <div id="search">
+                  <p class="bebas-neue-regular">YOUR MORTON LOCATION</p>
+                  <div class="search">
+                    <input type="text" id="searchInput" placeholder="Search" />
+                    <svg
+                      class="icon-search"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                    >
+                      <path
+                        d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div id="info" class="info bebas-neue-regular">
+                    <span class="xl">0.8</span>  <span class="s ">KM</span>
+                    <div  class="infos">
+                      <span class="l">Morton Buildings in</span>
+                      <p class="xs">Culpeper, VA</p>
+                      <span class="m">18478 Industrial Rd
+                        Culpeper, VA 22701</span>
+                        <a href="" class="lnk bebas-neue-regular">More Details</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="button-info">
+                  <a
+                    target="_blank"
+                    href="https://mortonbuildings.com/get-started"
+                    class="get-start get bebas-neue-regular"
+                    >GET STARTED</a
+                  >
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <script src="js/app.js"></script>
+    <script src="js/maps.js"></script>
   </body>
 </html>
