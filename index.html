@@ -6,6 +6,14 @@
     <title>Morton Buildings</title>
     <link rel="stylesheet" href="css/font-style.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/unnamed-removebg-preview.png"
+      type="image/x-icon"
+    />
+
+    <script src="https://api-maps.yandex.ru/v3/?apikey=b4bc3f35-28ac-4fe8-a1da-a329aac8c0f0&lang=ru_RU"></script>
+    <script src="js/maps.js" type="module"></script>
     <link rel="stylesheet" href="css/maps.css" />
     <link rel="stylesheet" href="css/slider.css" />
   </head>
@@ -406,7 +414,9 @@
             </div>
             <div class="slide maps">
               <div class="container-map">
-                <div id="map" class="map"></div>
+                <div id="map" class="map">
+                  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6d66a30d1c910fb28b07e8e8901dcf3b2dc5432989daa9290fca2496a0244cea&amp;source=constructor" width="880" height="600" frameborder="0"></iframe>
+                </div>
               </div>
               <div class="information">
                 <div id="search">
@@ -426,13 +436,16 @@
                     </svg>
                   </div>
                   <div id="info" class="info bebas-neue-regular">
-                    <span class="xl">0.8</span>  <span class="s ">KM</span>
-                    <div  class="infos">
+                    <span class="xl">0.8</span> <span class="s">KM</span>
+                    <div class="infos">
                       <span class="l">Morton Buildings in</span>
-                      <p class="xs">Culpeper, VA</p>
-                      <span class="m">18478 Industrial Rd
-                        Culpeper, VA 22701</span>
-                        <a href="" class="lnk bebas-neue-regular">More Details</a>
+                      <p class="xs">Culpeper, <span class="state">VA</span></p>
+                      <span class="m"
+                        >18478 Industrial Rd Culpeper,
+                        <span class="state">VA</span>
+                        <span class="zip">22701</span></span
+                      >
+                      <a href="" class="lnk bebas-neue-regular">More Details</a>
                     </div>
                   </div>
                 </div>
@@ -451,6 +464,5 @@
       </div>
     </div>
     <script src="js/app.js"></script>
-    <script src="js/maps.js"></script>
   </body>
 </html>
