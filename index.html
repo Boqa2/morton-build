@@ -21,6 +21,11 @@
     <div class="container">
       <div class="content">
         <header>
+          <span class="x1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+              <path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"></path>
+              </svg>
+          </span>
           <a href="/" class="logo">
             <div>
               <svg class="mortonLogo" viewBox="0 0 189.83 163.29">
@@ -163,7 +168,8 @@
         </header>
         <div class="swiper-container">
           <div class="inner-swiper">
-            <div class="main slide">
+            <div class="slide main active">
+              <div class="bg-opasity"></div>
               <div class="main-text">
                 <p class="mt1 forTopFade bebas-neue-regular">
                   BUILT STRONGER. <br />
@@ -215,7 +221,7 @@
             <div class="slide foto-slide">
               <div class="slider-container">
                 <div class="inner-morton">
-                  <div class="sli">
+                  <div class="sli actives">
                     <img src="assets/Steve-Hobby-Garage_01 (1).png" alt="" />
                   </div>
                   <div class="sli">
@@ -257,7 +263,7 @@
               </div>
               <div class="swiper-text-container">
                 <div class="text-inner">
-                  <div class="text-slider">
+                  <div class="text-slider active">
                     <div class="for-texts">
                       <span class="texts1 bebas-neue-regular"
                         >VEHICLE STORAGE</span
@@ -356,11 +362,11 @@
                 <div class="dots-container">
                   <div class="dots"></div>
                   <div class="but">
-                    <button class="custom-prevs">
+                    <button id="prev" class="custom-prevs">
                       <div class="line line1"></div>
                       <div class="line line2"></div>
                     </button>
-                    <button class="custom-nexts">
+                    <button id="next" class="custom-nexts">
                       <div class="line line1"></div>
                       <div class="line line2"></div>
                     </button>
@@ -368,7 +374,7 @@
                 </div>
               </div>
             </div>
-            <div class="slide 3d-studio">
+            <div class="slide d-studio">
               <div class="studia">
                 <div class="anime-text">
                   <div class="anime bebas-neue-regular forTopFade">
@@ -415,7 +421,12 @@
             <div class="slide maps">
               <div class="container-map">
                 <div id="map" class="map">
-                  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6d66a30d1c910fb28b07e8e8901dcf3b2dc5432989daa9290fca2496a0244cea&amp;source=constructor" width="880" height="600" frameborder="0"></iframe>
+                  <iframe
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A6d66a30d1c910fb28b07e8e8901dcf3b2dc5432989daa9290fca2496a0244cea&amp;source=constructor"
+                    width="880"
+                    height="600"
+                    frameborder="0"
+                  ></iframe>
                 </div>
               </div>
               <div class="information">
