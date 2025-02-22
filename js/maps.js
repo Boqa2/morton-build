@@ -1,83 +1,106 @@
+const city = document.querySelector(".xs");
+const km = document.querySelector(".xl");
+const state = document.querySelectorAll(".state");
+const adres_line = document.querySelector(".m");
+const zip = document.querySelector(".zip");
+const search = document.querySelector("#searchInput");
+
+let map;
+let placemark;
 let locations = [];
-let isDragging = false;
-let startX,
-  startY,
-  mapX = 0,
-  mapY = 0;
-const sheetId = "1fvefUw8hHH0r1VR2puCmqHygW9pL91L3";
-const sheetName = "ADDRESS_LINE_1";
-const apiUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&tq=&sheet=${sheetName}`;
 
-async function loadData() {
-  const response = await fetch(apiUrl);
-  const text = await response.text();
-  const json = JSON.parse(text.substring(47, text.length - 2));
+// Загружаем данные из Google Sheets
+async function loadGoogleSheet() {
+  const sheetUrl =
+    "https://docs.google.com/spreadsheets/d/1fvefUw8hHH0r1VR2puCmqHygW9pL91L3/gviz/tq?tqx=out:json";
 
-  locations = json.table.rows.map((row) => {
-    return {
-      name: row.c[0]?.v || "",
-      lat: parseFloat(row.c[1]?.v) || 0,
-      lon: parseFloat(row.c[2]?.v) || 0,
-      address: row.c[3]?.v || "",
-    };
+  try {
+    const response = await fetch(sheetUrl);
+    const text = await response.text();
+    const jsonText = text.match(/\{.*\}/s);
+    if (!jsonText) throw new Error("Ошибка парсинга JSON!");
+
+    const json = JSON.parse(jsonText[0]);
+    const headers = json.table.cols
+      .map((col) => col.label)
+      .filter((col) => col !== "");
+
+    const rows = json.table.rows
+      .map((row) => row.c.map((cell) => (cell ? cell.v : "")))
+      .filter((row) => row[0] !== "");
+
+    locations = rows.map((row) => ({
+      zip: row[3], // ZIP-код
+      city: row[1], // Город
+      state: row[2], // Штат
+      address: row[1], // Адрес
+      region: row[4],
+      distance: row[6], // Расстояние
+    }));
+
+    console.log("Данные загружены:", locations);
+    return rows;
+  } catch (error) {
+    console.error("Ошибка загрузки данных:", error);
+  }
+}
+async function initMap() {
+  await ymaps3;
+
+  const { YMap, YMapDefaultSchemeLayer } = ymaps3;
+
+  const map = new YMap(document.getElementById("app"), {
+    location: {
+      center: [37.588144, 55.733842],
+      zoom: 10,
+    },
   });
 
-  renderMap(locations);
+  map.addChild(new YMapDefaultSchemeLayer());
 }
 
-console.log(locations);
+initMap();
 
-function renderMap(data) {
-  const map = document.getElementById("map");
-  const info = document.getElementById("info");
-  const mapWidth = map.clientWidth;
-  const mapHeight = map.clientHeight;
-  map.innerHTML = "";
+// Функция поиска по ZIP-коду
+function searchByZip(zipCode) {
+  const result = locations.find((loc) => loc.zip === zipCode);
 
-  data.forEach(({ name, lat, lon, address }) => {
-    const x = (lon + 180) * (mapWidth / 360);
-    const y = (90 - lat) * (mapHeight / 180);
+  if (!result) {
+    city.textContent = result.city;
+    adres_line.textContent = result.address;
+    zip.textContent = result.zip;
+    km.textContent = result.distance;
 
-    const point = document.createElement("div");
-    point.className = "point";
-    point.style.left = `${x}px`;
-    point.style.top = `${y}px`;
-    point.onclick = () => {
-      info.innerHTML = `<h3>${name}</h3><p>${address}</p>`;
-    };
+    state.forEach((el) => (el.textContent = result.state));
 
-    map.appendChild(point);
+    updateMapMarker(result.latitude, result.longitude);
+  } else {
+    alert("Местоположение не найдено!");
+  }
+}
+
+// Обновление маркера на карте
+function updateMapMarker(lat, lon) {
+  if (!map) return;
+
+  if (placemark) {
+    placemark.remove();
+  }
+
+  ymaps3.import("@yandex/ymaps3").then(({ YMapMarker }) => {
+    placemark = new YMapMarker({ coordinates: [lon, lat] });
+    map.addChild(placemark);
+    map.update({ location: { center: [lon, lat], zoom: 12 } });
   });
 }
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const query = this.value.toLowerCase();
-  const filtered = locations.filter(
-    (loc) =>
-      loc.name.toLowerCase().includes(query) ||
-      loc.address.toLowerCase().includes(query)
-  );
-  renderMap(filtered);
+// Обработчик поиска
+search.addEventListener("change", () => {
+  const zipCode = search.value.trim();
+  if (zipCode) {
+    searchByZip(zipCode);
+  }
 });
 
-const map = document.getElementById("map");
-map.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startX = e.clientX - mapX;
-  startY = e.clientY - mapY;
-  map.style.cursor = "grabbing";
-});
-
-document.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-  mapX = e.clientX - startX;
-  mapY = e.clientY - startY;
-  map.style.transform = `translate(${mapX}px, ${mapY}px)`;
-});
-
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-  map.style.cursor = "grab";
-});
-
-loadData();
+// Загружаем данные и инициализируем карту
+loadGoogleSheet().then(initMap());
